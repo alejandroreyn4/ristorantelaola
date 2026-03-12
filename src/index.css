@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Castoro:ital@0;1&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Castoro", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+
+  --animate-marquee: marquee var(--duration) linear infinite;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+
+  @keyframes marquee-vertical {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+/* Custom Cursor Styles */
+@media (min-width: 1024px) {
+  body {
+    cursor: none;
+  }
+}
+
+#custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid #041A25;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.2s ease-out;
+}
+
+@media (max-width: 1023px) {
+  #custom-cursor {
+    display: none !important;
+  }
+}
+
+#custom-cursor.is-hovering {
+  transform: scale(2);
+  background-color: rgba(4, 26, 37, 0.2);
+}
