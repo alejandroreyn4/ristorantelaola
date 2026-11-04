@@ -6,62 +6,29 @@ import { t, updateLanguage } from '../i18n';
 import Footer from '../components/Footer';
 
 const menuData = [
-  // Antipasti
-  { id: 1, category: 'antipasti', name: 'Muscoli alla marinara con peperoncino', desc: '', price: '€14', type: 'mare' },
-  { id: 2, category: 'antipasti', name: 'Insalata tiepida di polpo* con patate e olive taggiasche', desc: '', price: '€16', type: 'mare' },
-  { id: 3, category: 'antipasti', name: 'Tartare di tonno con cialdine di parmigiano', desc: '', price: '€18', type: 'mare' },
-  { id: 4, category: 'antipasti', name: 'Brandacujun su crostini e insalatina', desc: '', price: '€12', type: 'mare' },
-  { id: 5, category: 'antipasti', name: 'Caprese di bufala', desc: '', price: '€10', type: 'terra' },
-
-  // Primi
-  { id: 6, category: 'primi', name: 'Spaghetti allo scoglio*', desc: '', price: '€18', type: 'mare' },
-  { id: 7, category: 'primi', name: 'Spaghetti alle vongole con bottarga di muggine', desc: '', price: '€16', type: 'mare' },
-  { id: 8, category: 'primi', name: 'Penne alla brezza di mare*', desc: '', price: '€16', type: 'mare' },
-  { id: 9, category: 'primi', name: 'Paccheri al veliero', desc: '', price: '€15', type: 'mare' },
-  { id: 10, category: 'primi', name: 'Ravioli di pesce ai frutti di mare* e pachino', desc: '', price: '€15', type: 'mare' },
-  { id: 11, category: 'primi', name: 'Ravioli di zucca con burro, salvia e granella di pistacchio', desc: '', price: '€13', type: 'terra' },
-  { id: 12, category: 'primi', name: 'Gnocchetti al pesto genovese', desc: '', price: '€11', type: 'terra' },
-
-  // Secondi
-  { id: 13, category: 'secondi', name: 'Zuppetta piccante di muscoli e vongole', desc: '', price: '€17', type: 'mare' },
-  { id: 14, category: 'secondi', name: 'Spada* alla piastra', desc: '', price: '€16', type: 'mare' },
-  { id: 15, category: 'secondi', name: 'Orata o branzino alla piastra', desc: '', price: '€16', type: 'mare' },
-  { id: 16, category: 'secondi', name: 'Frittura di baccalà* e acciughe*', desc: '', price: '€16', type: 'mare' },
-  { id: 17, category: 'secondi', name: 'Frittura di calamari* e gamberi*', desc: '', price: '€18', type: 'mare' },
-  { id: 18, category: 'secondi', name: 'Frittura di calamari*', desc: '', price: '€17', type: 'mare' },
-  { id: 19, category: 'secondi', name: 'Tataki di tonno in crosta di sesamo con verdurine', desc: '', price: '€22', type: 'mare' },
-  { id: 20, category: 'secondi', name: 'Tagliata di manzo con rucola e grana', desc: '', price: '€17', type: 'terra' },
-
-  // Contorni
-  { id: 21, category: 'contorni', name: 'Patatine* fritte', desc: '', price: '€5', type: 'terra' },
-  { id: 22, category: 'contorni', name: 'Insalata mista', desc: '', price: '€4', type: 'terra' },
-  { id: 23, category: 'contorni', name: 'Verdure miste saltate', desc: '', price: '€5', type: 'terra' },
-  { id: 24, category: 'contorni', name: 'Verza viola in agrodolce', desc: '', price: '€5', type: 'terra' },
-
-  // Dessert
-  { id: 25, category: 'dessert', name: 'Proposta del giorno', desc: '', price: '€6', type: 'dessert' },
-  { id: 26, category: 'dessert', name: 'Panna cotta liscia, con crema ai frutti di bosco, cioccolato o caramello', desc: '', price: '€4', type: 'dessert' },
-  { id: 27, category: 'dessert', name: 'Torta meringata liscia, con crema ai frutti di bosco, cioccolato o caramello', desc: '', price: '€4', type: 'dessert' },
-  { id: 28, category: 'dessert', name: 'Gelato alla crema', desc: '', price: '€4', type: 'dessert' },
-  { id: 29, category: 'dessert', name: 'Gelato alla crema affogato con crema ai frutti di bosco, cioccolato, caramello, caffè o whiskey', desc: '', price: '€7', type: 'dessert' },
-  { id: 30, category: 'dessert', name: 'Cheesecake alle fragole', desc: '', price: '€5', type: 'dessert' },
-  { id: 31, category: 'dessert', name: 'Semifreddo al torroncino', desc: '', price: '€5', type: 'dessert' },
-  { id: 32, category: 'dessert', name: 'Sorbetto della casa', desc: '', price: '€5', type: 'dessert' },
-  { id: 33, category: 'dessert', name: 'Sorbetto della casa con liquore', desc: '', price: '€6', type: 'dessert' },
-  { id: 34, category: 'dessert', name: 'Gelato al cocco', desc: '', price: '€6', type: 'dessert' },
-  { id: 35, category: 'dessert', name: 'Ananas al naturale', desc: '', price: '€4', type: 'dessert' },
-  { id: 36, category: 'dessert', name: 'Ananas con gelato o con liquore', desc: '', price: '€6', type: 'dessert' },
-
-  // Menu per bambini
-  { id: 37, category: 'bambini', name: 'Trofie al pesto', desc: '(grano - uova - latte)', price: '€9', type: 'vegetariano' },
-  { id: 38, category: 'bambini', name: 'Penne al pomodoro', desc: '(grano)', price: '€8', type: 'vegetariano' },
-  { id: 39, category: 'bambini', name: 'Cotoletta di pollo', desc: '(grano - uova - prezzemolo)', price: '€8', type: 'terra' },
-  { id: 40, category: 'bambini', name: 'Hamburger di manzo', desc: '(senza glutine)', price: '€8', type: 'terra' },
-  { id: 41, category: 'bambini', name: 'Prosciutto cotto', desc: '(senza glutine)', price: '€6', type: 'terra' },
-  { id: 42, category: 'bambini', name: 'Bastoncini* di pesce', desc: '(grano - uova - pesce)', price: '€7', type: 'mare' },
-  { id: 43, category: 'bambini', name: 'Filetto di orata* ai ferri', desc: '(pesce)', price: '€9', type: 'mare' },
-  { id: 44, category: 'bambini', name: 'Patatine* fritte', desc: '', price: '€4', type: 'vegetariano' },
-  { id: 45, category: 'bambini', name: 'Pomodori', desc: '', price: '€4', type: 'vegetariano' },
+  {"id": 1, "category": "antipasti", "name": "Muscoli alla marinara con peperoncino", "desc": "(mollusco - solfiti)", "price": "€ 14,00", "type": "mare"},
+  {"id": 2, "category": "antipasti", "name": "Tartare di gamberi* con bufala e granella di pistacchio", "desc": "(crostaceo - latte - pepe - frutta a guscio)", "price": "€ 16,00", "type": "mare"},
+  {"id": 3, "category": "antipasti", "name": "Insalata tiepida di mare*", "desc": "(mollusco - crostaceo)", "price": "€ 16,00", "type": "mare"},
+  {"id": 4, "category": "antipasti", "name": "Insalata di calamari* e fagioli cannellini", "desc": "(mollusco)", "price": "€ 13,00", "type": "mare"},
+  {"id": 5, "category": "antipasti", "name": "Brandacujun* su crostini, insalatina e glassa di lime e the verde", "desc": "(pesce - latte - pepe)", "price": "€ 12,00", "type": "mare"},
+  {"id": 6, "category": "antipasti", "name": "Caprese di bufala", "desc": "(latte)", "price": "€ 10,00", "type": "terra"},
+  {"id": 7, "category": "primi", "name": "Spaghetti allo scoglio*", "desc": "(grano - uova - mollusco - crostaceo - frumento)", "price": "€ 18,00", "type": "mare"},
+  {"id": 8, "category": "primi", "name": "Spaghetti alle vongole*", "desc": "(grano - uova - mollusco - solfiti)", "price": "€ 16,00", "type": "mare"},
+  {"id": 9, "category": "primi", "name": "Spaghetti alle vongole* con bottarga di muggine", "desc": "(grano - uova - mollusco - solfiti)", "price": "€ 18,00", "type": "mare"},
+  {"id": 10, "category": "primi", "name": "Paccheri al veliero*", "desc": "(grano - pesce)", "price": "€ 15,00", "type": "mare"},
+  {"id": 11, "category": "primi", "name": "Gnocchi alle 5 Terre, gamberoni*, pachino e pesto", "desc": "(grano - crostaceo - latte - uova)", "price": "€ 14,00", "type": "mare"},
+  {"id": 12, "category": "primi", "name": "Ravioli* di pesce ai frutti di mare* e pachino", "desc": "(grano - uova - mollusco - crostaceo - pesce)", "price": "€ 16,00", "type": "mare"},
+  {"id": 13, "category": "primi", "name": "Ravioli* di zucca con burro, salvia e granella di pistacchio", "desc": "(grano - latte - frutta a guscio)", "price": "€ 13,00", "type": "terra"},
+  {"id": 14, "category": "primi", "name": "Gnocchetti al pesto genovese", "desc": "(grano - uova - latte)", "price": "€ 12,00", "type": "terra"},
+  {"id": 15, "category": "secondi", "name": "Zuppetta di muscoli e vongole* con peperoncino e crostini di pane", "desc": "(mollusco - grano - solfiti)", "price": "€ 18,00", "type": "mare"},
+  {"id": 16, "category": "secondi", "name": "Gamberoni* alla griglia", "desc": "(crostaceo - solfiti)", "price": "€ 18,00", "type": "mare"},
+  {"id": 17, "category": "secondi", "name": "Orata o branzino alla piastra guarnito con glassa di aceto balsamico", "desc": "(pesce)", "price": "€ 17,00", "type": "mare"},
+  {"id": 18, "category": "secondi", "name": "Orata o branzino alla ligure con patate e olive taggiasche", "desc": "(pesce)", "price": "€ 20,00", "type": "mare"},
+  {"id": 19, "category": "secondi", "name": "Spada* alla piastra", "desc": "(pesce)", "price": "€ 16,00", "type": "mare"},
+  {"id": 20, "category": "secondi", "name": "Frittura di calamari* e baccalà*", "desc": "(mollusco - grano - solfiti)", "price": "€ 20,00", "type": "mare"},
+  {"id": 21, "category": "secondi", "name": "Frittura di calamari* e gamberi*", "desc": "(mollusco - crostaceo - grano - solfiti)", "price": "€ 18,00", "type": "mare"},
+  {"id": 22, "category": "secondi", "name": "Frittura di calamari*", "desc": "(mollusco - grano - solfiti)", "price": "€ 17,00", "type": "mare"},
+  {"id": 23, "category": "secondi", "name": "Tagliata di manzo con rucola e grana", "desc": "(latte)", "price": "€ 18,00", "type": "terra"},
 ];
 
 const fadeIn = {
@@ -266,7 +233,7 @@ export default function MenuPage() {
             className="text-center mb-16"
           >
             <div className="flex overflow-x-auto no-scrollbar justify-start md:justify-center gap-6 md:gap-8 mb-8 pb-2 -mx-6 px-6 md:mx-0 md:px-0">
-              {['antipasti', 'primi', 'secondi', 'contorni', 'dessert', 'bambini'].map((cat) => (
+              {['antipasti', 'primi', 'secondi'].map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
