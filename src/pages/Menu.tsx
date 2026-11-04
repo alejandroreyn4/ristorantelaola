@@ -29,6 +29,14 @@ const menuData = [
   {"id": 21, "category": "secondi", "name": "Frittura di calamari* e gamberi*", "desc": "(mollusco - crostaceo - grano - solfiti)", "price": "€ 18,00", "type": "mare"},
   {"id": 22, "category": "secondi", "name": "Frittura di calamari*", "desc": "(mollusco - grano - solfiti)", "price": "€ 17,00", "type": "mare"},
   {"id": 23, "category": "secondi", "name": "Tagliata di manzo con rucola e grana", "desc": "(latte)", "price": "€ 18,00", "type": "terra"},
+  {"id": 24, "category": "bambini", "name": "Trofie* al pesto", "desc": "(grano - uova - latte)", "price": "€ 9,00", "type": "terra"},
+  {"id": 25, "category": "bambini", "name": "Penne al pomodoro", "desc": "(grano)", "price": "€ 8,00", "type": "terra"},
+  {"id": 26, "category": "bambini", "name": "Cotoletta di pollo*", "desc": "(grano - uova - prezzemolo - arachidi)", "price": "€ 8,00", "type": "terra"},
+  {"id": 27, "category": "bambini", "name": "Hamburger di manzo*", "desc": "senza glutine", "price": "€ 8,00", "type": "terra"},
+  {"id": 28, "category": "bambini", "name": "Bastoncini* di pesce", "desc": "(grano - uova - pesce)", "price": "€ 7,00", "type": "mare"},
+  {"id": 29, "category": "bambini", "name": "Filetto di orata* ai ferri", "desc": "(pesce)", "price": "€ 9,00", "type": "mare"},
+  {"id": 30, "category": "bambini", "name": "Patatine* fritte", "desc": "", "price": "€ 4,00", "type": "terra"},
+  {"id": 31, "category": "bambini", "name": "Pomodori", "desc": "", "price": "€ 4,00", "type": "terra"},
 ];
 
 const fadeIn = {
@@ -233,7 +241,7 @@ export default function MenuPage() {
             className="text-center mb-16"
           >
             <div className="flex overflow-x-auto no-scrollbar justify-start md:justify-center gap-6 md:gap-8 mb-8 pb-2 -mx-6 px-6 md:mx-0 md:px-0">
-              {['antipasti', 'primi', 'secondi'].map((cat) => (
+              {['antipasti', 'primi', 'secondi', 'bambini', 'serale'].map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
@@ -244,7 +252,7 @@ export default function MenuPage() {
               ))}
             </div>
 
-            <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
+            {activeCategory !== 'serale' && <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-12">
               {['tutti', 'mare', 'terra'].map((type) => (
                 <button
                   key={type}
@@ -254,9 +262,36 @@ export default function MenuPage() {
                   <span data-i18n={`menu-type-${type}`}>{t(`menu-type-${type}`, language)}</span>
                 </button>
               ))}
-            </div>
+            </div>}
           </motion.div>
 
+          {activeCategory === 'serale' ? (
+            <div className="space-y-12">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                {[
+                  { category: 'primi', dishes: ['Proposta del giorno di mare', 'Spaghetti, cozze, zucchine, pomodorini', 'Ravioli* di zucca, burro, salvia, granella di pistacchio'] },
+                  { category: 'secondi', dishes: ['Spada* ai ferri o alla siciliana', 'Fritto* misto di mare', 'Proposta del giorno di terra'] },
+                  { category: 'contorni', dishes: ['Insalata mista', 'Patatine fritte'] },
+                ].map(group => (
+                  <div key={group.category}>
+                    <h2 className="font-serif text-2xl mb-6 text-[#000c7a]">{t(`menu-cat-${group.category}`, language)}</h2>
+                    <ul className="space-y-5">
+                      {group.dishes.map(dish => <li key={dish} className="font-serif text-lg md:text-xl">{dish}</li>)}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+              <div className="bg-[#FAF9F6] p-8 rounded-2xl text-center">
+                <h2 className="font-serif text-2xl mb-4">{t('menu-evening-includes', language)}</h2>
+                <p className="text-gray-600 leading-relaxed">{t('menu-evening-details', language)}</p>
+                <p className="font-serif text-3xl mt-6">€ 28,00 <span className="text-base">{t('menu-evening-person', language)}</span></p>
+              </div>
+              <div className="flex justify-between items-center gap-6 font-serif text-xl">
+                <h3>{t('menu-evening-dessert', language)}</h3>
+                <span className="whitespace-nowrap">€ 4,00</span>
+              </div>
+            </div>
+          ) : (
           <motion.div 
             layout
             className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12"
@@ -287,10 +322,11 @@ export default function MenuPage() {
               })}
             </AnimatePresence>
           </motion.div>
+          )}
 
           <div className="mt-16 pt-8 border-t border-gray-200 text-center md:text-left text-sm text-gray-500 font-light flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-[10px] opacity-80" data-i18n="menu-frozenWarning">{t('menu-frozenWarning', language)}</p>
-            <p className="font-medium text-[#041A25]" data-i18n="menu-coverCharge">{t('menu-coverCharge', language)}</p>
+            {activeCategory !== 'serale' && <p className="font-medium text-[#041A25]" data-i18n="menu-coverCharge">{t('menu-coverCharge', language)}</p>}
           </div>
         </div>
       </section>
