@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 
 const menuData = [
   // Antipasti
-  { id: 1, category: 'antipasti', name: 'Muscoli alla marinara con peperoncino', desc: '', price: '€12', type: 'mare' },
+  { id: 1, category: 'antipasti', name: 'Muscoli alla marinara con peperoncino', desc: '', price: '€14', type: 'mare' },
   { id: 2, category: 'antipasti', name: 'Insalata tiepida di polpo* con patate e olive taggiasche', desc: '', price: '€16', type: 'mare' },
   { id: 3, category: 'antipasti', name: 'Tartare di tonno con cialdine di parmigiano', desc: '', price: '€18', type: 'mare' },
   { id: 4, category: 'antipasti', name: 'Brandacujun su crostini e insalatina', desc: '', price: '€12', type: 'mare' },
